@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:
+  app:
+    build: .
+    # restart: always
+    ports:
+      - '80:3000'
+    environment:
+      - MONGO_HOST=db
+      - NODE_ENV=production
+    depends_on:
+      - db
+  db:
+    image: mongo:4.0.10-xenial
+    volumes:
+      - ./db:/data/db
