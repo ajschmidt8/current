@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "nodemon app.js",
+    "test": "jest --coverage"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +16,8 @@
     "mongoose": "^5.6.4"
   },
   "devDependencies": {
+    "@types/jest": "^24.0.15",
+    "jest": "^24.8.0",
     "nodemon": "^1.19.1"
   }
 }

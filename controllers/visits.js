@@ -15,12 +15,14 @@ module.exports = {
           name: visit.name,
         });
       } catch (error) {
-        return res.status(404).send(`No visit found with ID: ${visitId}`);
+        res.status(404);
+        return res.send(`No visit found with ID: ${visitId}`);
       }
     } else if (userId && searchString) {
-      const visitsResults = await Visit.find({ userId })
-        .limit(5)
-        .sort('-_id');
+      const visitsResults = await Visit.find({ userId }, null, {
+        limit: 5,
+        sort: '-_id',
+      });
       const fuse = new Fuse(visitsResults, { keys: ['name'] });
       const results = fuse.search(searchString);
       visits.push(
