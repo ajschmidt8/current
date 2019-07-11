@@ -10,4 +10,7 @@ COPY . .
 
 EXPOSE 3000
 
-CMD [ "node", "app.js" ]
+ADD https://github.com/ufoscout/docker-compose-wait/releases/download/2.5.1/wait /wait
+RUN chmod +x /wait
+
+CMD /wait && node app.js
